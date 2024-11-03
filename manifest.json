@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Shuffle Extension",
+    "version": "1.0",
+    "description": "Shuffle YouTube Playlists",
+    "permissions": [
+        "storage",
+        "tabs",
+        "activeTab"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "128": "shuffle.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "128": "shuffle.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://www.youtube.com/*"],
+            "js": ["content.js"]
+        }
+    ]
+}

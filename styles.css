@@ -1,0 +1,60 @@
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 20px; 
+    background-color: #2c2c2c; /* Dark mode background */
+    text-align: center;
+    color: #e0e0e0; /* Light text color for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    padding: 20px; /* Padding for better spacing */
+}
+
+b {
+    font-size: 1.5em; /* Increased font size */
+    color: #4CAF50; /* Greenish color similar to Grammarly */
+    margin-bottom: 15px; /* Space below the title */
+}
+
+.label-text { 
+    display: block; /* Make label a block element for better layout */
+    margin-top: 20px; /* Space above the label */
+    font-size: 1.1em; /* Slightly larger font for the label */
+    font-weight: bold; /* Make the label text bold */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+#toggleSwitch {
+    display: none; /* Hide the default checkbox */
+}
+
+.toggle-label {
+    display: block; /* Block display to separate lines */
+    width: 40px; /* Adjusted width for smaller toggle */
+    height: 20px; /* Adjusted height for smaller toggle */
+    background-color: #ddd;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px auto; /* Center the toggle with auto margins */
+}
+
+.toggle-label::before {
+    content: '';
+    position: absolute;
+    top: 2px; /* Adjusted position for smaller toggle */
+    left: 2px; /* Adjusted position for smaller toggle */
+    width: 16px; /* Adjusted width for smaller toggle knob */
+    height: 16px; /* Adjusted height for smaller toggle knob */
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+#toggleSwitch:checked + .toggle-label {
+    background-color: #4CAF50; /* Green when checked */
+}
+
+#toggleSwitch:checked + .toggle-label::before {
+    transform: translateX(20px); /* Matches toggle size */
+}
