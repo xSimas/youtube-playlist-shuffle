@@ -7,7 +7,7 @@ const isYouTubeUrl = (url) => {
 const updatePopup = (tab) => {
     if (tab.url && isYouTubeUrl(tab.url)) {
         // Set the popup to your popup.html
-        chrome.action.setPopup({ popup: 'popup.html' });
+        chrome.action.setPopup({ popup: './src/popup.html' });
         } else {
         // If not a YouTube URL, set the popup to empty
         chrome.action.setPopup({ popup: '' });

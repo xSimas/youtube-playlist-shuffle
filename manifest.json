@@ -9,21 +9,21 @@
         "activeTab"
     ],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "./src/js/background.js"
     },
     "icons": {
-        "128": "shuffle.png"
+        "128": "./src/shuffle.png"
     },
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "./src/popup.html",
         "default_icon": {
-            "128": "shuffle.png"
+            "128": "./src/shuffle.png"
         }
     },
     "content_scripts": [
         {
             "matches": ["*://www.youtube.com/*"],
-            "js": ["content.js"]
+            "js": ["./src/js/content.js"]
         }
     ]
 }
