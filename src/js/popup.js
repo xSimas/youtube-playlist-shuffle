@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         chrome.storage.local.set({ shuffleEnabled: isEnabled }, () => {
             if (!isEnabled) {
-                chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                    chrome.tabs.reload(tabs[0].id);
-                });
+                chrome.tabs.query({ url: "*://*.youtube.com/*" }, (tabs) => {
+                    tabs.forEach((tab) => {
+                        chrome.tabs.reload(tab.id);
+                    });
+                });                
             }
         });
     });
