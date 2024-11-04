@@ -57,14 +57,24 @@ function initialize() {
             clonePrev.addEventListener('click', shuffleAndPlay);
             
             // 3. When the URL changes unexpectedly (e.g. we drag the video seeker to the end - no way to detect that properly), trigger shuffleAndPlay:
+            function getPlaylist(url) {
+                const urlObj = new URL(url);
+                const params = new URLSearchParams(urlObj.search);
+                return params.get('list');
+            }
             let currentUrl = window.location.href;
+            let currentPlaylist = getPlaylist(currentUrl);
             const observer = new MutationObserver((mutationsList) => {
                 for (const mutation of mutationsList) {
                     if (mutation.type === 'childList') {
                         if (window.location.href !== currentUrl) {
                             currentUrl = window.location.href;
-                            if (!shuffleAndPlayLocked) {
-                                shuffleAndPlay();
+                            if (currentPlaylist === getPlaylist(currentUrl)) {
+                                if (!shuffleAndPlayLocked) {
+                                    shuffleAndPlay();
+                                }
+                            } else {
+                                window.location.href = currentUrl;
                             }
                         }
                     }
