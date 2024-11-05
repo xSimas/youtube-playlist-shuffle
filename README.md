@@ -1,32 +1,33 @@
-# youtube-playlist-shuffle
+# YouTube Shuffle Extension
 
-This is a Chromium extension that I wrote for myself to fix YouTube's "Shuffle" functionality in playlists.
+This is a web browser extension that I wrote for myself which fixes YouTube's playlist shuffle functionality. The extension is compatible with Chromium-based browsers (Chrome, Brave, etc).
 
-There are many issues with the default functionality, mainly the non-randomness of the shuffles. This extension implements a basic `Math.random()` based shuffle to randomly select the next video from a playlist.
+My main issue with the default shuffle was the non-randomness of the shuffles and YouTube's algorithmic selections for the next video, even though the playlist is "shuffled".
+
+This extension implements a basic JavaScript's `Math.random()` shuffle to randomly select the next video from a playlist when the current one ends.
 
 ![Image](https://i.imgur.com/N2rrwPt.png)
 
 ## Installation
 
-1. Download the repository as a folder and save it on your Desktop.
+1. Download the repository and extract the folder on your Desktop: [Link](https://github.com/xSimas/youtube-playlist-shuffle/archive/refs/heads/main.zip)
 2. Go to `chrome://extensions/` in your browser.
 3. In the top-right corner, enable `Developer mode`
-4. In the top-left corner, you should now see `Load unpacked` selection. Select it and load the folder from your Desktop.
+4. In the top-left corner, you should now see `Load unpacked` selection. Select it and load the extenion folder from your Desktop.
 
 ## Features
 
-1. `Enable Shuffle` option to toggle the extension functionality on/off. If it's turned on, it will function for all playlists.
+1. Use `Enable Custom Shuffle` option to toggle the extension on/off. When it's turned on, the custom shuffle will work on all playlists.
 2. The extension was built for Desktop users. A new random video will be played when: 
-- Video finishes by itself.
-- In the player, the user clicks "Next" or "Previous" buttons.
-- The user "seeks" the video until the end.
-- The video unexpectedly changes to some other from the playlist.
+    - The video finishes by itself.
+    - In the video player, the user clicks "Next" or "Previous" buttons.
+    - The user seeks the video until it's end.
+    - The video unexpectedly changes to some other from the current playlist.
 3. If the user changes the video manually, it won't be randomized.
 
 ## Credits
 
-- YouTube for having an awful Shuffler.
-- ChatGPT for introduction to Chromium extensions and styling the popup (CSS).
+- ChatGPT: Introduction to extensions and styling the extension popup.
 
 ## Contact
 
