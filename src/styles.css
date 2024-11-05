@@ -1,60 +1,110 @@
-body { 
-    font-family: Arial, sans-serif; 
-    margin: 20px; 
-    background-color: #2c2c2c; /* Dark mode background */
+/* Base styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220px;
+    width: 392px;
+    background-color: #1a1a2e;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.popup-container {
     text-align: center;
-    color: #e0e0e0; /* Light text color for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    padding: 20px; /* Padding for better spacing */
+    padding: 6%;
+    background-color: #1f1f2e;
+    color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    border: 1px solid #333;
 }
 
+/* Header styling for icon and title */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Icon styling */
+.shuffle-icon {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 0 5px rgba(156, 136, 255, 0.6)) 
+            drop-shadow(0 0 10px rgba(156, 136, 255, 0.4)) 
+            drop-shadow(0 0 15px rgba(156, 136, 255, 0.2));
+}
+
+/* Title styling */
 b {
-    font-size: 1.5em; /* Increased font size */
-    color: #4CAF50; /* Greenish color similar to Grammarly */
-    margin-bottom: 15px; /* Space below the title */
+    font-size: 1.5em;
+    color: #9c88ff;
+    text-shadow: 0 0 3px rgba(156, 136, 255, 0.6), 0 0 5px rgba(156, 136, 255, 0.4); /* Reduced glow */
 }
 
-.label-text { 
-    display: block; /* Make label a block element for better layout */
-    margin-top: 20px; /* Space above the label */
-    font-size: 1.1em; /* Slightly larger font for the label */
-    font-weight: bold; /* Make the label text bold */
-    white-space: nowrap; /* Prevent wrapping */
+/* Updated Label styling for "Enable Shuffle" */
+.label-text {
+    display: block;
+    font-size: 1.25em; /* Slightly larger font */
+    font-weight: bold;
+    color: #d3d3d3; /* Light gray color */
+    text-shadow: none; /* No glow when unchecked */
+    transition: text-shadow 0.3s ease; /* Smooth transition for glow */
+    white-space: nowrap;
+    position: relative; /* Enable positioning */
+    top: -56px; /* Move label higher */
 }
 
+/* Toggle switch */
 #toggleSwitch {
-    display: none; /* Hide the default checkbox */
+    display: none;
 }
 
 .toggle-label {
-    display: block; /* Block display to separate lines */
-    width: 40px; /* Adjusted width for smaller toggle */
-    height: 20px; /* Adjusted height for smaller toggle */
-    background-color: #ddd;
+    display: block;
+    width: 50px;
+    height: 25px;
+    background-color: #555; /* Default background when off */
     border-radius: 50px;
     position: relative;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 10px auto; /* Center the toggle with auto margins */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 0 auto; /* Center the toggle label */
+    margin-top: 56px; /* Add margin to position it lower */
 }
 
+/* Knob for the toggle switch */
 .toggle-label::before {
     content: '';
     position: absolute;
-    top: 2px; /* Adjusted position for smaller toggle */
-    left: 2px; /* Adjusted position for smaller toggle */
-    width: 16px; /* Adjusted width for smaller toggle knob */
-    height: 16px; /* Adjusted height for smaller toggle knob */
-    background-color: white;
+    top: 4px;
+    left: 4px;
+    width: 17px;
+    height: 17px;
+    background-color: #e0e0e0; /* Knob color when off */
     border-radius: 50%;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 0 4px #e0e0e0; /* Subtle glow for the knob */
 }
 
+/* Toggle active styles */
 #toggleSwitch:checked + .toggle-label {
-    background-color: #4CAF50; /* Green when checked */
+    background-color: #4CAF50; /* Green background when checked */
+    box-shadow: 0 0 8px #4CAF50; /* Green glow */
 }
 
 #toggleSwitch:checked + .toggle-label::before {
-    transform: translateX(20px); /* Matches toggle size */
+    transform: translateX(25px);
+    background-color: #ffffff; /* White knob when checked */
+    box-shadow: 0 0 4px #ffffff; /* Subtle glow for the white knob */
+}
+
+/* When toggle is checked, apply glow to label-text */
+#toggleSwitch:checked + .toggle-label + .label-text {
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.4), 0 0 5px rgba(255, 255, 255, 0.2); /* White glow effect */
 }
