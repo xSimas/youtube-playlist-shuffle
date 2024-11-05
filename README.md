@@ -19,7 +19,7 @@ This extension implements a basic JavaScript's `Math.random()` shuffle to random
 
 1. Use `Enable Custom Shuffle` option to toggle the extension on/off. When it's turned on, the custom shuffle will work on all playlists. 
 
-2. If you have both enabled; the extension, and YouTube's default suffle, the extension will not be interrupted and should work as usual.
+2. If you have both enabled; the extension, and YouTube's default shuffle, the extension will not be interrupted and should work as usual.
 
 3. The extension was built for Desktop users. A new random video will be played when: 
     - The video finishes by itself.
