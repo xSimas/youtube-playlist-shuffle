@@ -4,6 +4,44 @@ let shuffleAndPlayLockTimeout = 2500;
 let shuffleAndPlayLocked = false;
 let shuffleAndPlayLockTimeoutId = null;
 
+// Manage lock for shuffleAndPlay function so that it's not triggered too frequently:
+function lockShuffleAndPlay() {
+    shuffleAndPlayLocked = true;
+    
+    if (shuffleAndPlayLockTimeoutId) {
+        clearTimeout(shuffleAndPlayLockTimeoutId);
+    }
+    
+    shuffleAndPlayLockTimeoutId = setTimeout(() => {
+        shuffleAndPlayLocked = false;
+    }, shuffleAndPlayLockTimeout);
+}
+
+// Manage videoItems:
+let videoItems = [];
+function updateVideoItems() {
+    videoItems  = [];
+    const items = document.querySelectorAll('ytd-playlist-panel-video-renderer');
+
+    items.forEach((element) => {
+        element.querySelector('a').removeEventListener('click', lockShuffleAndPlay);
+        element.querySelector('a').addEventListener('click', lockShuffleAndPlay);
+
+        videoItems.push(element);
+    });
+}
+
+// Main shuffleAndPlay function:
+function shuffleAndPlay(event) {
+    if (event && event.type === 'click') {
+        event.preventDefault();
+    }
+    setTimeout(updateVideoItems, shuffleAndPlayLockTimeout);
+
+    const idx = Math.floor(Math.random() * videoItems.length);
+    videoItems[idx].querySelector('a').click();
+}
+
 function initialize() {
     chrome.storage.local.get('shuffleEnabled', (data) => {
         if (!data.shuffleEnabled) {
@@ -11,39 +49,12 @@ function initialize() {
         }
         
         const player = document.querySelector('video');
-        const videoItems = document.querySelectorAll('ytd-playlist-panel-video-renderer');
+        updateVideoItems();
         
         let prevButton = document.querySelector('a.ytp-prev-button');
         let nextButton = document.querySelector('a.ytp-next-button');
         
         if (!init && player && prevButton && nextButton && videoItems.length > 1) {
-            // Manage lock for shuffleAndPlay function so that it's not triggered too frequently:
-            function lockShuffleAndPlay() {
-                shuffleAndPlayLocked = true;
-                
-                if (shuffleAndPlayLockTimeoutId) {
-                    clearTimeout(shuffleAndPlayLockTimeoutId);
-                }
-                
-                shuffleAndPlayLockTimeoutId = setTimeout(() => {
-                    shuffleAndPlayLocked = false;
-                }, shuffleAndPlayLockTimeout);
-            }
-            
-            // Lock shuffleAndPlay when we click the playlist item:
-            videoItems.forEach((element) => {
-                element.querySelector('a').addEventListener('click', lockShuffleAndPlay);
-            });
-            
-            // Main shuffleAndPlay function:
-            function shuffleAndPlay(event) {
-                if (event && event.type === 'click') {
-                    event.preventDefault();
-                }
-                const idx = Math.floor(Math.random() * videoItems.length);
-                videoItems[idx].querySelector('a').click();
-            }
-
             // 1. When video ends on it's own, trigger shuffleAndPlay:
             player.addEventListener('ended', shuffleAndPlay);
             
@@ -72,6 +83,8 @@ function initialize() {
                             if (currentPlaylist === getPlaylist(currentUrl)) {
                                 if (!shuffleAndPlayLocked) {
                                     shuffleAndPlay();
+                                } else {
+                                    setTimeout(updateVideoItems, shuffleAndPlayLockTimeout);
                                 }
                             } else {
                                 window.location.href = currentUrl;
