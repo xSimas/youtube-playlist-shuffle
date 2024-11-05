@@ -1,10 +1,10 @@
 # YouTube Shuffle Extension
 
-This is a web browser extension that I wrote for myself which fixes YouTube's playlist shuffle functionality. The extension is compatible with Chromium-based browsers (Chrome, Brave, etc).
+This is a web browser extension that implements a new YouTube playlist shuffle functionality. The extension is compatible with Chromium-based browsers (Google Chrome, Brave, etc).
 
 My main issue with the default shuffle was the non-randomness of the shuffles and YouTube's algorithmic selections for the next video, even though the playlist is "shuffled".
 
-This extension implements a basic JavaScript's `Math.random()` shuffle to randomly select the next video from a playlist when the current one ends.
+This extension implements a basic JavaScript's `Math.random()` video selection from the currently active playlist. A new video is randomly selected when the current one ends.
 
 ![Image](https://i.imgur.com/N2rrwPt.png)
 
