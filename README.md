@@ -4,7 +4,7 @@ This is a Chromium extension that I wrote for myself to fix YouTube's "Shuffle" 
 
 There are many issues with the default functionality, mainly the non-randomness of the shuffles. This extension implements a basic `Math.random()` based shuffle to randomly select the next video from a playlist.
 
-![Image](https://i.imgur.com/1qQKT8h.png)
+![Image](https://i.imgur.com/N2rrwPt.png)
 
 ## Installation
 

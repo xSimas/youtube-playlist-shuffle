@@ -6,16 +6,33 @@ body {
     align-items: center;
     height: 220px;
     width: 392px;
-    background-color: #1a1a2e;
+    background-color: #1a1a2e; /* Dominant background color */
     margin: 0;
     padding: 0;
     overflow: hidden;
+    position: relative; /* Allows positioning of ::before */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5; /* Adjust opacity for silhouette effect */
+    filter: brightness(0.5); /* Darken the image to create a subtle silhouette */
+    z-index: -1; /* Places the image behind the body content */
 }
 
 .popup-container {
     text-align: center;
     padding: 6%;
-    background-color: #1f1f2e;
+    background-color: rgba(31, 31, 46, 0.5); /* Slightly transparent background */
     color: #e0e0e0;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
@@ -47,6 +64,17 @@ b {
     text-shadow: 0 0 3px rgba(156, 136, 255, 0.6), 0 0 5px rgba(156, 136, 255, 0.4); /* Reduced glow */
 }
 
+.author {
+    font-size: 0.75em;
+    color: #a0a0a0; /* Light gray color for subtlety */
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%); /* Center-align */
+    opacity: 0.8; /* Slightly transparent */
+    text-align: center;
+}
+
 /* Updated Label styling for "Enable Shuffle" */
 .label-text {
     display: block;
@@ -57,7 +85,8 @@ b {
     transition: text-shadow 0.3s ease; /* Smooth transition for glow */
     white-space: nowrap;
     position: relative; /* Enable positioning */
-    top: -56px; /* Move label higher */
+    margin-top: 16px;
+    margin-bottom: 20px;
 }
 
 /* Toggle switch */
@@ -75,7 +104,7 @@ b {
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     margin: 0 auto; /* Center the toggle label */
-    margin-top: 56px; /* Add margin to position it lower */
+    margin-top: 20px; /* Add margin to position it lower */
 }
 
 /* Knob for the toggle switch */
