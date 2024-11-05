@@ -8,9 +8,6 @@
         "tabs",
         "activeTab"
     ],
-    "background": {
-        "service_worker": "./src/js/background.js"
-    },
     "icons": {
         "128": "./src/shuffle.png"
     },
