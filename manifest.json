@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "YouTube Shuffle Extension",
     "version": "1.0",
-    "description": "Shuffle YouTube Playlists",
+    "description": "Shuffle playlists randomly.",
     "permissions": [
         "storage",
         "tabs",

@@ -1,4 +1,3 @@
-/* Base styling */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -6,11 +5,11 @@ body {
     align-items: center;
     height: 220px;
     width: 392px;
-    background-color: #1a1a2e; /* Dominant background color */
+    background-color: #1a1a2e;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    position: relative; /* Allows positioning of ::before */
+    position: relative;
 }
 
 body::before {
@@ -24,22 +23,21 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.5; /* Adjust opacity for silhouette effect */
-    filter: brightness(0.5); /* Darken the image to create a subtle silhouette */
-    z-index: -1; /* Places the image behind the body content */
+    opacity: 0.4;
+    filter: brightness(0.4);
+    z-index: -1;
 }
 
 .popup-container {
     text-align: center;
     padding: 6%;
-    background-color: rgba(31, 31, 46, 0.5); /* Slightly transparent background */
+    background-color: rgba(31, 31, 46, 0.4);
     color: #e0e0e0;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     border: 1px solid #333;
 }
 
-/* Header styling for icon and title */
 .header {
     display: flex;
     align-items: center;
@@ -48,7 +46,6 @@ body::before {
     margin-bottom: 15px;
 }
 
-/* Icon styling */
 .shuffle-icon {
     width: 40px;
     height: 40px;
@@ -57,39 +54,36 @@ body::before {
             drop-shadow(0 0 15px rgba(156, 136, 255, 0.2));
 }
 
-/* Title styling */
 b {
     font-size: 1.5em;
     color: #9c88ff;
-    text-shadow: 0 0 3px rgba(156, 136, 255, 0.6), 0 0 5px rgba(156, 136, 255, 0.4); /* Reduced glow */
+    text-shadow: 0 0 3px rgba(156, 136, 255, 0.6), 0 0 5px rgba(156, 136, 255, 0.4);
 }
 
 .author {
-    font-size: 0.75em;
-    color: #a0a0a0; /* Light gray color for subtlety */
+    font-size: 0.7em;
+    color: #a0a0a0;
     position: absolute;
-    bottom: 3px;
+    bottom: 4px;
     left: 50%;
-    transform: translateX(-50%); /* Center-align */
-    opacity: 0.8; /* Slightly transparent */
+    transform: translateX(-50%);
+    opacity: 0.8;
     text-align: center;
 }
 
-/* Updated Label styling for "Enable Shuffle" */
 .label-text {
     display: block;
-    font-size: 1.25em; /* Slightly larger font */
+    font-size: 1.25em;
     font-weight: bold;
-    color: #d3d3d3; /* Light gray color */
-    text-shadow: none; /* No glow when unchecked */
-    transition: text-shadow 0.3s ease; /* Smooth transition for glow */
+    color: #d3d3d3;
+    text-shadow: none;
+    transition: text-shadow 0.3s ease;
     white-space: nowrap;
-    position: relative; /* Enable positioning */
+    position: relative;
     margin-top: 16px;
     margin-bottom: 20px;
 }
 
-/* Toggle switch */
 #toggleSwitch {
     display: none;
 }
@@ -98,16 +92,15 @@ b {
     display: block;
     width: 50px;
     height: 25px;
-    background-color: #555; /* Default background when off */
+    background-color: #555;
     border-radius: 50px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
-    margin: 0 auto; /* Center the toggle label */
-    margin-top: 20px; /* Add margin to position it lower */
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
-/* Knob for the toggle switch */
 .toggle-label::before {
     content: '';
     position: absolute;
@@ -115,25 +108,23 @@ b {
     left: 4px;
     width: 17px;
     height: 17px;
-    background-color: #e0e0e0; /* Knob color when off */
+    background-color: #e0e0e0;
     border-radius: 50%;
     transition: transform 0.3s, background-color 0.3s;
-    box-shadow: 0 0 4px #e0e0e0; /* Subtle glow for the knob */
+    box-shadow: 0 0 4px #e0e0e0;
 }
 
-/* Toggle active styles */
 #toggleSwitch:checked + .toggle-label {
-    background-color: #4CAF50; /* Green background when checked */
-    box-shadow: 0 0 8px #4CAF50; /* Green glow */
+    background-color: #4CAF50;
+    box-shadow: 0 0 8px #4CAF50;
 }
 
 #toggleSwitch:checked + .toggle-label::before {
     transform: translateX(25px);
-    background-color: #ffffff; /* White knob when checked */
-    box-shadow: 0 0 4px #ffffff; /* Subtle glow for the white knob */
+    background-color: #ffffff;
+    box-shadow: 0 0 4px #ffffff;
 }
 
-/* When toggle is checked, apply glow to label-text */
 #toggleSwitch:checked + .toggle-label + .label-text {
-    text-shadow: 0 0 3px rgba(255, 255, 255, 0.4), 0 0 5px rgba(255, 255, 255, 0.2); /* White glow effect */
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.4), 0 0 5px rgba(255, 255, 255, 0.2);
 }

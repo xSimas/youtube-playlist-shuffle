@@ -6,7 +6,7 @@ My main issue with the default shuffle was the non-randomness of the shuffles an
 
 This extension implements a basic JavaScript's `Math.random()` video selection from the currently active playlist. A new video is randomly selected when the current one ends.
 
-![Image](https://i.imgur.com/N2rrwPt.png)
+![Image](https://i.imgur.com/hvHuToC.png)
 
 ## Installation
 

@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleSwitch = document.getElementById('toggleSwitch');
+    let toggleSwitch = document.getElementById('toggleSwitch');
     
-    // Get the current status from storage and set the switch position
     chrome.storage.local.get('shuffleEnabled', (data) => {
-        toggleSwitch.checked = data.shuffleEnabled ?? true; // Default to enabled if not set
+        toggleSwitch.checked = data.shuffleEnabled ?? true;
     });
     
-    // Listen for toggle switch changes
     toggleSwitch.addEventListener('change', () => {
-        const isEnabled = toggleSwitch.checked;
+        let isEnabled = toggleSwitch.checked;
         
         chrome.storage.local.set({ shuffleEnabled: isEnabled }, () => {
             if (!isEnabled) {
